@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
    <div className= "Navmedia">
-    <nav className="flex  text-center  text-xl bg-[#35CBD2] pl-20">
+    <nav className="flex  text-center  text-xl bg-[#8b5cf6] pl-20">
       <div className="flex justify-center items-center flex-shrink-0 text-white mr-6">
        {/* <img src={logo[0].src} alt="logo" className="h-40 w-15 mr-3" /> */}
         <span className="font-semibold text-3xl tracking-tight">HireScan</span>

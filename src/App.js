@@ -52,7 +52,7 @@ function App() {
             <Route path='login' element={<Login onFormSwitch={toggleForm} />} />
             <Route path='/' element={<Homepage />} />
             <Route path='/searchpage' element={<Searchpage />} />
-            <Route path='/register' element={<Register onFormSwitch={toggleForm} />} />
+            <Route path='register' element={<Register onFormSwitch={toggleForm} />} />
             <Route path='/about-me' element={<Aboutme />} />
           </Routes>
         </div>

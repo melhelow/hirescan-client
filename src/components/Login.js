@@ -9,7 +9,7 @@ export const Login = (props) => {
         e.preventDefault();
         console.log(email);
 
-            fetch('https://cal-pal-server-273e253c14e5.herokuapp.com/graphql', {
+            fetch('', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ query: `mutation { login(email: "${email}", password: "${pass}")  { token } }` })
