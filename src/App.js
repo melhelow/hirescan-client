@@ -8,7 +8,6 @@ import Login from './components/Login';
 import Homepage from './pages/Homepage';
 import Aboutme from './pages/Aboutme';
 import Review from './pages/Review';
-
 import Searchpage from './pages/Searchpage';
 import Navbar from './components/Navbar';
 
@@ -54,6 +53,7 @@ function App() {
             <Route path='/searchpage' element={<Searchpage />} />
             <Route path='register' element={<Register onFormSwitch={toggleForm} />} />
             <Route path='/about-me' element={<Aboutme />} />
+            <Route path='/myprofile' element={<Review />} />
           </Routes>
         </div>
       </BrowserRouter>

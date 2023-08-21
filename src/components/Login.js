@@ -17,7 +17,7 @@ export const Login = (props) => {
             console.log(data.data.login)
             if (data.data.login) {
             localStorage.setItem('id_token', data.data.login.token);
-            window.location.pathname='/dashboard' 
+            window.location.pathname='/myprofile' 
             } setWrongInfo("Incorrect Username or Password -- Try again!");
 
         }).catch(err => console.log(err))

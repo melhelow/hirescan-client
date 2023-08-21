@@ -34,7 +34,7 @@ const Navbar = () => {
           <a href="/searchpage" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
             Search
           </a>
-          <a href="/review" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+          <a href="/myprofile" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
             My profile
           </a>
           <a href="/about-me" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
