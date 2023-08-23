@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Homepage from './pages/Homepage';
 import Aboutme from './pages/Aboutme';
-import Review from './pages/Review';
+import Profile from './pages/Profile';
 import Searchpage from './pages/Searchpage';
 import Navbar from './components/Navbar';
 
@@ -53,7 +53,7 @@ function App() {
             <Route path='/searchpage' element={<Searchpage />} />
             <Route path='register' element={<Register onFormSwitch={toggleForm} />} />
             <Route path='/about-me' element={<Aboutme />} />
-            <Route path='/myprofile' element={<Review />} />
+            <Route path='/myprofile' element={<Profile />} />
           </Routes>
         </div>
       </BrowserRouter>
