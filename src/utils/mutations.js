@@ -18,3 +18,24 @@ mutation addUser($username: String!, $email: String!, $password: String!) {
     }
   }
   `
+export const ADD_REVIEW = gql`
+mutation Mutation($username: String!, $company: String!, $personInCharge: String!, $telephone: String!, $email: String!, $website: String!, $address: String!, $review: String!) {
+  addReview(username: $username, company: $company, personInCharge: $personInCharge, telephone: $telephone, email: $email, website: $website, address: $address, review: $review) {
+    _id
+    address
+    company
+    date
+    email
+    personInCharge
+    review
+    telephone
+    username
+    website
+  }
+}`
+
+export const REMOVE_REVIEW = gql`
+mutation Mutation($id: ID!) {
+  removeReview(_id: $id)
+}
+`
