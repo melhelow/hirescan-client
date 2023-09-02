@@ -48,7 +48,12 @@ export const Register = (props) => {
 
             <form className="register-form" onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
-                <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Name" />
+                <input 
+                value={name} 
+                name="name" 
+                onChange={(e) => setName(e.target.value)} 
+                id="name" 
+                placeholder="Name" />
 
                 <label htmlFor="email">Email</label>
                 <h4 style={{ color: 'red' }}>{addEmailAlert}</h4>
