@@ -12,7 +12,7 @@ import Searchpage from './pages/Searchpage';
 import Navbar from './components/Navbar';
 
 const httpLink = createHttpLink({
-  // uri: 'https://cal-pal-server-273e253c14e5.herokuapp.com/graphql'
+  uri: 'https://hirescan-backend-aef0d7beacba.herokuapp.com/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
