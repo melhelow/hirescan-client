@@ -5,6 +5,8 @@ import Searchpage from '../pages/Searchpage';
 
 export default function Profile () {
 
+    
+
 if(Auth.loggedIn()) {
     return (
         <div>

@@ -36,4 +36,20 @@ query GetReview($getReviewId: ID!) {
     website
   }
 }`
+export const GET_COMPANY_BY_NAME_AND_REVIEW = gql`
+query Query($company: String!, $review: String!) {
+  getCompanyByNameAndReview(company: $company, review: $review) {
+    _id
+    address
+    company
+    date
+    email
+    personInCharge
+    review
+    telephone
+    username
+    website
+  }
+}
+`
 

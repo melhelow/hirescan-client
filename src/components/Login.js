@@ -9,7 +9,7 @@ export const Login = (props) => {
         e.preventDefault();
         console.log(email);
 
-            fetch('', {
+            fetch('https://hirescan-backend-aef0d7beacba.herokuapp.com/graphql', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ query: `mutation { login(email: "${email}", password: "${pass}")  { token } }` })

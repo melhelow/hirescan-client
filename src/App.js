@@ -47,7 +47,6 @@ function App() {
             <Navbar />
           </nav>
           <Routes>
-            {/* <Route path='calories' element={<Calories />} /> */}
             <Route path='login' element={<Login onFormSwitch={toggleForm} />} />
             <Route path='/' element={<Homepage />} />
             <Route path='/searchpage' element={<Searchpage />} />

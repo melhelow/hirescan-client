@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react"; // Imports React libraries as well as useEffect and useState
 import Auth from "../utils/auth";
-import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-import { ADD_REVIEW } from "../utils/mutations";
+
 
 
 const Searchpage = () => {
@@ -19,8 +18,24 @@ const Searchpage = () => {
         setCompany([]);
     };
     const Navigate = useNavigate();
+    // const [addReview] = useMutation(ADD_REVIEW, {
+    //     refetchQueries: [{
+    //         query: GET_COMPANY_BY_NAME_AND_REVIEW,
+    //         variables: {
+    //              company: getUsernameFromToken(), 
+    //              review: getFormattedDated(),
+
+
+          
+    //         },
+    //     },
+    // ],
+    // });
+
+
+
     const addReview = () => {
-        Navigate("/login"); 
+        Navigate("/myprofile"); 
     };
     return (
         <div className= " search-companies">
