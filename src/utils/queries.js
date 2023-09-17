@@ -1,14 +1,15 @@
 import { gql } from '@apollo/client';
 
 export const GET_USER = gql`
-query GetUser($getUserId: ID!) {
+query Query($getUserId: ID!) {
   getUser(id: $getUserId) {
     _id
     email
     password
     username
   }
-}`
+}
+`
 
 export const GET_ALL_USERS = gql`
 query Query {
@@ -20,9 +21,19 @@ query Query {
     }
   }
 `
+export const GET_ALL_REVIEWS = gql`
+query GetAllReviews {
+  getAllReviews {
+  
+    company
+    
+    review
+ 
+  }
+}
+`
 export const GET_REVIEW = gql`
-query GetReview($getReviewId: ID!) {
-     
+query Query($getReviewId: ID!) {
   getReview(id: $getReviewId) {
     _id
     address
@@ -35,10 +46,12 @@ query GetReview($getReviewId: ID!) {
     username
     website
   }
+
+
 }`
-export const GET_COMPANY_BY_NAME_AND_REVIEW = gql`
-query Query($company: String!, $review: String!) {
-  getCompanyByNameAndReview(company: $company, review: $review) {
+export const GET_REVIEW_BY_COMPANY = gql`
+query Query($company: String!) {
+  getReviewByCompany(company: $company) {
     _id
     address
     company
@@ -50,6 +63,39 @@ query Query($company: String!, $review: String!) {
     username
     website
   }
-}
-`
+}`
+export const GET_COMPANY_BY_ID = gql`
+query Query($getCompanyByIdId: ID!) {
+  getCompanyById(id: $getCompanyByIdId) {
+    _id
+    address
+    company
+    date
+    email
+    personInCharge
+    review
+    telephone
+    username
+    website
+  }
+}`
+
+export const GET_ALL_COMPANIES = gql`
+query Query {
+  getAllCompanies {
+    _id
+    address
+    company
+    date
+    email
+    personInCharge
+    review
+    telephone
+    username
+    website
+  }
+}`
+
+
+
 
