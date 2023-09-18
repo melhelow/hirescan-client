@@ -25,9 +25,16 @@ export const GET_ALL_REVIEWS = gql`
 query GetAllReviews {
   getAllReviews {
   
+    _id
+    address
     company
-    
+    date
+    email
+    personInCharge
     review
+    telephone
+    username
+    website
  
   }
 }

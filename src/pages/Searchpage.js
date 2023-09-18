@@ -18,7 +18,9 @@ const Searchpage = () => {
 
     const [company, setCompany] = useState("");
     const [review, setReview] = useState([]);
+
     const [searchResults, setSearchResults] = useState("");
+    const [filteredReviews, setFilteredReviews] = useState([]);
 
     // console.log(searchResults)
 
@@ -44,7 +46,7 @@ const Searchpage = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault();
    
-       ( setCompany(""))
+     console.log(review);
     
        
         
@@ -58,7 +60,8 @@ const Searchpage = () => {
    const { loading, error, data } = useQuery(GET_ALL_REVIEWS, {
   variables: {
     company: company,
-    review: review
+    review: review,
+    // adress: address
     
   },
 });
@@ -68,9 +71,9 @@ const Searchpage = () => {
 // Use a useEffect to log data when it's available
 useEffect(() => {
   if (data) {
-    const filteredReviews = data.getAllReviews.filter((review) => review.company);
+    // const filteredReviews = data.getAllReviews.filter((review) => review.company);
 
-    console.log(filteredReviews);
+    // console.log(filteredReviews);
    
   }
 }, [data]);
@@ -85,60 +88,59 @@ if (error) {
   return <p>Error: {error.message}</p>;
 }
 
- 
+const handleSearchClick =() => {
+const filteredReviews = data.getAllReviews.filter((review) => {
+  if (searchResults.toLowerCase() === '') {
+    return true; // Include all reviews when searchResults is empty
+  } else {
+    return review.company.toLowerCase().includes(searchResults.toLowerCase());
+  }
   
-
-
-    return (
-        <div className= " search-companies">
-            <div className="search-bar">
-                <form className="search-form" onSubmit={handleFormSubmit}>
-                    <input
-                       id="search"
-                       type="text"
-                       value={company}
-                       onChange={handleSearchChange}
-                        placeholder="Search for a company"
-                    />
-                    <button type="submit">Search</button>
-                  
-
-                </form>
-                <div>
-                  <table>
-                
-                      <tr>
-                        <th>Company</th>
-                        <th>Review</th>
-                      </tr>
-                  
-                    <tbody>
-                    {data.getAllReviews.filter((review) => {
-                      if (searchResults.toLowerCase() === '') {
-                        return true; // Include all reviews when searchResults is empty
-                      } else {
-                        return review.company.toLowerCase().includes(searchResults.toLowerCase());
-                      }
-                    })
-                      .map((review) => (
-                        <tr key={review._id}>
-                          <td>{review.company}</td>
-                          <td>{review.review}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                <button onClick={addReview}>Add Review</button>
-                    
-            </div>
-
-
-         
-
-        </div>
-    );
+});
+setFilteredReviews(filteredReviews);
 };
+
+return (
+  <div className="search-companies">
+    <div className="search-bar">
+      <form className="search-form" onSubmit={handleFormSubmit}>
+        <input
+          id="search"
+          type="text"
+          value={searchResults}
+          onChange={handleSearchChange}
+          placeholder="Search for a company"
+        />
+        <button onClick={handleSearchClick}>Search</button>
+      </form>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Review</th>
+            <th>Address</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          {filteredReviews.map((review) => (
+            <tr key={review._id}>
+              
+              <td>{review.company}</td>
+              <td>{review.review}</td>
+              <td>{review.address}</td>
+              <td>{review.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <button onClick={addReview}>Add Review</button>
+  </div>
+);
+}
 
 export default Searchpage;
