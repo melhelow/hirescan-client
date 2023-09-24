@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react"; // Imports React libraries a
 import Auth from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { useQuery , gql} from "@apollo/client";
-import { GET_ALL_USERS} from "../utils/queries";
-import { GET_REVIEW } from "../utils/queries";
+// import { GET_ALL_USERS} from "../utils/queries";
+// import { GET_REVIEW } from "../utils/queries";
 import { GET_ALL_REVIEWS} from "../utils/queries";
 
-import {getUsernameFromToken, getFormattedDate} from '../utils/helpers';
+
 
 
 
@@ -30,10 +30,10 @@ const Searchpage = () => {
    
 
 
-    const handleCompanyChange = (event) => {
-        setCompany(event.target.value);
+    // const handleCompanyChange = (event) => {
+    //     setCompany(event.target.value);
         
-    };
+    // };
 
     const handleSearchChange = (event) => {
         setSearchResults(event.target.value);
@@ -44,14 +44,14 @@ const Searchpage = () => {
     
 
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
+    // const handleFormSubmit = (event) => {
+    //     event.preventDefault();
    
-     console.log(review);
+    //  console.log(review);
     
        
         
-    };
+    // };
 
 
     const addReview = () => {
@@ -106,36 +106,6 @@ let displayContent = null; // Initialize as null
         // Display "No data found" message only when a search is performed and no data is found
         displayContent = <p>No data found.Do you want to add your experince?</p>;
     } 
-        // displayContent = (
-        //     <table>
-        //         <thead>
-        //             <tr>
-        //                 <th>Company</th>
-                        
-        //                 <th>Review</th>
-        //                 <th>Address</th>
-        //                 <th>Date</th>
-        //                 <th>email</th>
-        //                 <th>Telephone</th>
-        //                 <th>Website</th>
-        //             </tr>
-        //         </thead>
-        //         <tbody>
-        //             {filteredReviews.map((review) => (
-        //                 <tr key={review._id}>
-                          
-        //                     <td>{review.company}</td>
-        //                     <td>{review.review}</td>
-        //                     <td>{review.address}</td>
-        //                     <td>{review.date}</td>
-        //                     <td>{review.email}</td>
-        //                     <td>{review.telephone}</td>
-        //                     <td>{review.website}</td>
-        //                 </tr>
-        //             ))}
-        //         </tbody>
-        //     </table>
-        // );
  
 
 
@@ -157,7 +127,7 @@ let displayContent = null; // Initialize as null
             </button>
           </form>
         </div>
-    
+        <div>
         {filteredReviews.length > 0 ? (
           <table>
             <thead>
@@ -190,6 +160,7 @@ let displayContent = null; // Initialize as null
             <p>No data found. Do you want to add your experience?</p>
           )
         )}
+        </div>
     
         <button onClick={addReview}>Add Review</button>
       </div>
