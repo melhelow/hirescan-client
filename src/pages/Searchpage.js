@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react"; // Imports React libraries as well as useEffect and useState
-import Auth from "../utils/auth";
+
 import { useNavigate } from "react-router-dom";
-import { useQuery , gql} from "@apollo/client";
-// import { GET_ALL_USERS} from "../utils/queries";
-// import { GET_REVIEW } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+
 import { GET_ALL_REVIEWS} from "../utils/queries";
 
 
@@ -15,25 +14,18 @@ import { GET_ALL_REVIEWS} from "../utils/queries";
 const Searchpage = () => {
 
 
-
-    const [company, setCompany] = useState("");
-    const [review, setReview] = useState([]);
-
     const [searchResults, setSearchResults] = useState("");
     const [filteredReviews, setFilteredReviews] = useState([]);
-    const [searchMessage, setSearchMessage] = useState("");
 
-    // console.log(searchResults)
-
+    const handleKeyDown = (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission or any default action
+        handleSearchClick(); // Call your search function here (e.g., handleSearchClick)
+      }
+    };
+  
 
     const Navigate = useNavigate();
-   
-
-
-    // const handleCompanyChange = (event) => {
-    //     setCompany(event.target.value);
-        
-    // };
 
     const handleSearchChange = (event) => {
         setSearchResults(event.target.value);
@@ -41,17 +33,6 @@ const Searchpage = () => {
        
         
     };
-    
-
-
-    // const handleFormSubmit = (event) => {
-    //     event.preventDefault();
-   
-    //  console.log(review);
-    
-       
-        
-    // };
 
 
     const addReview = () => {
@@ -65,9 +46,7 @@ const Searchpage = () => {
 // Use a useEffect to log data when it's available
 useEffect(() => {
   if (data) {
-    // const filteredReviews = data.getAllReviews.filter((review) => review.company);
 
-    // console.log(filteredReviews);
    
   }
 }, [data]);
@@ -95,20 +74,9 @@ const filteredReviews = data.getAllReviews.filter((review) => {
 
 setFilteredReviews(filteredReviews);
 
+
+
 };
-let displayContent = null; // Initialize as null
-
-    if (loading) {
-        displayContent = <p>Loading...</p>;
-    } else if (error) {
-        displayContent = <p>Error: {error.message}</p>;
-    } else if (filteredReviews.length === 0 && searchResults !== "") {
-        // Display "No data found" message only when a search is performed and no data is found
-        displayContent = <p>No data found.Do you want to add your experince?</p>;
-    } 
- 
-
-
 
 
     return (
@@ -121,6 +89,7 @@ let displayContent = null; // Initialize as null
               value={searchResults}
               onChange={handleSearchChange}
               placeholder="Search for a company"
+              onKeyDown={handleKeyDown}
             />
             <button type="button" onClick={handleSearchClick}>
               Search
@@ -129,9 +98,11 @@ let displayContent = null; // Initialize as null
         </div>
         <div>
         {filteredReviews.length > 0 ? (
+         
           <table>
             <thead>
               <tr>
+
                 <th>Company</th>
                 <th>Review</th>
                 <th>Address</th>
@@ -158,7 +129,7 @@ let displayContent = null; // Initialize as null
         ) : (
           filteredReviews.length === 0 && searchResults !== "" && (
             <p>No data found. Do you want to add your experience?</p>
-          )
+          ) 
         )}
         </div>
     
