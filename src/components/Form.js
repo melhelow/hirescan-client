@@ -12,8 +12,7 @@ function Form() {
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
   const [review, setReview] = useState("");
-  // const [currentDate, setCurrentDate] = useState("");
-  // const [reviewData, setReviewData] = useState([]);
+
 
 
 
@@ -38,7 +37,7 @@ function Form() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // setReviewData([]);
+
 
 
 
@@ -74,6 +73,13 @@ function Form() {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // Prevent form submission or any default action
+      handleFormSubmit(event); // Call your search function here (e.g., handleSearchClick)
+    }
+  };
+
   return (
     <form onSubmit={handleFormSubmit}>
       <input
@@ -82,6 +88,7 @@ function Form() {
         placeholder="Company Name"
         value={company}
         onChange={(e) => setCompany(e.target.value)}
+        // onKeyDown={handleKeyDown}
       />
       <input
         type="text"
@@ -123,6 +130,7 @@ function Form() {
         placeholder="Review"
         value={review}
         onChange={(e) => setReview(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <button type="submit">Submit</button>
     </form>

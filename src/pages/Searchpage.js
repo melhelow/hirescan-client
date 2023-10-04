@@ -16,13 +16,10 @@ const Searchpage = () => {
 
     const [searchResults, setSearchResults] = useState("");
     const [filteredReviews, setFilteredReviews] = useState([]);
+    const [searchExecuted, setSearchExecuted] = useState(false); // New state variable
 
-    const handleKeyDown = (event) => {
-      if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent form submission or any default action
-        handleSearchClick(); // Call your search function here (e.g., handleSearchClick)
-      }
-    };
+
+
   
 
     const Navigate = useNavigate();
@@ -73,9 +70,17 @@ const filteredReviews = data.getAllReviews.filter((review) => {
 });
 
 setFilteredReviews(filteredReviews);
+setSearchExecuted(true); // Set searchExecuted to true after search
 
 
 
+
+};
+const handleKeyDown = (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Prevent form submission or any default action
+    handleSearchClick(); // Call your search function here (e.g., handleSearchClick)
+  }
 };
 
 
@@ -127,7 +132,7 @@ setFilteredReviews(filteredReviews);
             </tbody>
           </table>
         ) : (
-          filteredReviews.length === 0 && searchResults !== "" && (
+          searchExecuted && searchResults !== "" &&  (
             <p>No data found. Do you want to add your experience?</p>
           ) 
         )}
